@@ -1,6 +1,7 @@
 baseURL = "https://shidowister.github.io/ist-md-pc-club-site/"
 languageCode = 'en-us'
-title = '東京科学大学　お茶の水コンピュータ部'
+title = '東京科学大学　
+お茶の水コンピュータ部'
 theme = 'PaperMod'
 
 [menu]
