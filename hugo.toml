@@ -20,3 +20,8 @@ theme = 'PaperMod'
   [params.label]
     text = "東京科学大学<br>お茶の水コンピュータ部"
 
+[[menu.main]]
+    identifier = "members"
+    name = "部員紹介"
+    url = "/members/"
+    weight = 20
