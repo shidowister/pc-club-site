@@ -30,4 +30,4 @@ theme = 'PaperMod'
     name = "部員紹介"
     url = "/members/"
     weight = 20
-    
+
