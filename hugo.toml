@@ -10,12 +10,16 @@ theme = 'PaperMod'
     url = "/about/"
     weight = 10
 
+  [[menu.main]]
+    identifier = "members"
+    name = "部員紹介"
+    url = "/members/"
+    weight = 20
+
 [markup]
   [markup.goldmark]
-    # ▼▼▼ ここを追加！ ▼▼▼
     [markup.goldmark.parser]
       attribute = true
-    # ▲▲▲ ここまで ▲▲▲
 
     [markup.goldmark.renderer]
       hardWraps = true
@@ -23,11 +27,5 @@ theme = 'PaperMod'
 
 [params]
   [params.label]
-    text = "東京科学大学<br>お茶の水コンピュータ部"
-
-[[menu.main]]
-    identifier = "members"
-    name = "部員紹介"
-    url = "/members/"
-    weight = 20
+    text = "東京科学大学\nお茶の水コンピュータ部"
 
