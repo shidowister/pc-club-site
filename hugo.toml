@@ -12,6 +12,11 @@ theme = 'PaperMod'
 
 [markup]
   [markup.goldmark]
+    # ▼▼▼ ここを追加！ ▼▼▼
+    [markup.goldmark.parser]
+      attribute = true
+    # ▲▲▲ ここまで ▲▲▲
+
     [markup.goldmark.renderer]
       hardWraps = true
       unsafe = true
