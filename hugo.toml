@@ -27,5 +27,5 @@ theme = 'PaperMod'
 
 [params]
   [params.label]
-    text = "東京科学大学\nお茶の水コンピュータ部"
+    text = "東京科学大学<br>お茶の水コンピュータ部"
 
