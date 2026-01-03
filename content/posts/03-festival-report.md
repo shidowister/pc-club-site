@@ -5,6 +5,7 @@ draft: false
 author: ["TK"]
 categories: ["活動報告"]
 tags: ["お茶の水祭", "わらび餅ドリンク", "合同企画","学祭"]
+comments: true
 ---
 
 こんにちは、部長のTKです。

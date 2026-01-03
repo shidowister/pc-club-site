@@ -5,6 +5,7 @@ draft: false
 author: ["S藤"]
 categories: ["自作PC", "ジャンク再生"]
 tags: ["HP Z4 G4","Xeon", "LGA2066", "CPU","w-2235"]
+comments: true
 ---
 
 前回紹介したベースマシン「HP Z4 G4」。

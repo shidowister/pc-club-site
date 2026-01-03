@@ -5,6 +5,7 @@ draft: false
 author: ["S藤"]
 categories: ["自作PC", "ジャンク再生"]
 tags: ["HP Z4 G4", "ワークステーション", "ジャンク"]
+comments: true
 ---
 
 部員S藤が某所から貰ってきた5年落ちのワークステーション。

@@ -5,6 +5,7 @@ draft: false
 author: ["S藤"]
 categories: ["自作PC", "ジャンク再生"]
 tags: ["HP Z4 G4","RTX 4070", "NVIDIA", "グラボ","GPU"]
+comments: true
 ---
 
 CPUが決まり、次はいよいよゲーミングPCの心臓部、**GPU（グラフィックボード）** の選定です。
