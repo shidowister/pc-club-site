@@ -1,0 +1,38 @@
+{{- with site.Params.homeInfoParams }}
+<article class="first-entry home-info">
+    <header class="entry-header">
+        <h1>{{ .Title | markdownify }}</h1>
+    </header>
+    <div class="entry-content">
+        {{ .Content | markdownify }}
+    </div>
+    <footer class="entry-footer">
+        {{ partial "social_icons.html" $.Site.Params.socialIcons }}
+    </footer>
+
+    <div style="
+        margin-top: 25px; 
+        padding: 15px; 
+        border: 1px solid var(--border); 
+        border-radius: 8px; 
+        background-color: var(--code-bg); 
+        text-align: left; 
+        font-size: 0.85rem;
+        font-family: monospace;">
+        
+        <h3 style="margin: 0 0 10px 0; font-size: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 5px;">
+            🛠️ Site Update Log
+        </h3>
+        <ul style="margin: 0; padding-left: 20px; line-height: 1.6;">
+            <li>2026/01/05: コメント・いいね機能を追加 (v1.2)</li>
+            <li>2025/12/26: タグ・カテゴリ機能の整備</li>
+            <li>2024/12/12: 記事内の著者名をハイパーリンク化</li>
+            <li>2024/12/07: 著者名表示機能の追加</li>
+            <li>2024/12/06: 部員紹介ページ 開設</li>
+            <li>2024/12/05: SEO対策・サイトマップ実装 (v1.1)</li>
+            <li>2024/12/03: vs code環境に移行</li>
+            <li>2025/12/01: 公式サイト運用開始 (Beta)</li>
+        </ul>
+    </div>
+    </article>
+{{- end -}}
