@@ -30,6 +30,10 @@ theme = 'PaperMod'
   keywords = ["東京科学大学", "お茶の水", "医科歯科", "コンピュータ部", "パソコン部", "自作PC", "Institute of Science Tokyo"]
   author = "お茶の水コンピュータ部"
 
+  [params.homeInfoParams]
+   Title = "活動記録"
+   Content = "東京科学大学 お茶の水コンピュータ部の活動ブログです。"
+
   [params.label]
     text = "東京科学大学<br>お茶の水コンピュータ部"
 
