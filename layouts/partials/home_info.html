@@ -1,6 +1,6 @@
 {{- with site.Params.homeInfoParams }}
 <style>
-    /* 基本設定（スマホやタブレット用）: 今まで通り記事の上に表示 */
+    /* 1. リリースノート（右側の箱）の設定 */
     .site-update-log {
         margin-top: 25px;
         padding: 15px;
@@ -12,16 +12,32 @@
         font-family: monospace;
     }
 
-    /* PC用設定（画面幅が1400px以上の時だけ発動） */
+    /* PC画面での位置調整（1400px以上） */
     @media screen and (min-width: 1400px) {
         .site-update-log {
-            position: fixed;   /* 画面上の絶対位置に固定 */
+            position: fixed;
             right: 40px;       /* 右端から40px */
-            top: 180px;        /* 上から180px */
-            width: 280px;      /* 横幅を少しスリムに */
-            z-index: 100;      /* 他の要素より手前に表示 */
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* 少し影をつけて浮き上がらせる */
+            top: 200px;        /* 上から200px（タイトルと被らないよう十分に下げる） */
+            width: 280px;
+            z-index: 100;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
+    }
+
+    /* 2. 中央の挨拶エリア（活動記録...）のスリム化設定 ★ここを追加！★ */
+    .first-entry.home-info {
+        /* 上下の余白を削る */
+        padding-top: 10px !important;     /* 上の余白を減らす */
+        padding-bottom: 10px !important;  /* 下の余白を減らす */
+        margin-bottom: 20px !important;   /* 次の記事との隙間を減らす */
+        min-height: auto !important;      /* 無駄な高さをなくす */
+    }
+    
+    /* タイトル（活動記録）の文字サイズと余白調整 */
+    .home-info .entry-header h1 {
+        font-size: 1.8rem !important; /* 少し小さくして圧迫感を減らす */
+        margin-bottom: 5px !important;
+        margin-top: 0 !important;
     }
 </style>
 
@@ -41,15 +57,16 @@
             🛠️ Site Update Log
         </h3>
         <ul style="margin: 0; padding-left: 20px; line-height: 1.6;">
-            <li>2026/01/05: コメント・いいね機能を追加 (v1.5)</li>
-            <li>2025/12/26: タグ・カテゴリ機能の整備 (v1.4)</li>
-            <li>2025/12/12: 記事内の著者名をハイパーリンク化 (v1.3.1)</li>
-            <li>2025/12/07: 著者名表示機能の追加 (v1.3)</li>
-            <li>2025/12/06: 部員紹介ページ 開設 (v1.2)</li>
-            <li>2025/12/05: SEO対策・サイトマップ実装 (v1.1)</li>
-            <li>2025/12/03: VS Code環境に移行</li>
+            <li>2026/01/05: コメント・いいね機能を追加 (v1.2)</li>
+            <li>2025/12/26: タグ・カテゴリ機能の整備</li>
+            <li>2024/12/12: 記事内の著者名をハイパーリンク化</li>
+            <li>2024/12/07: 著者名表示機能の追加</li>
+            <li>2024/12/06: 部員紹介ページ 開設</li>
+            <li>2024/12/05: SEO対策・サイトマップ実装 (v1.1)</li>
+            <li>2024/12/03: VS Code環境に移行</li>
             <li>2025/12/01: 公式サイト運用開始 (Beta)</li>
         </ul>
     </div>
-    </article>
+
+</article>
 {{- end -}}
