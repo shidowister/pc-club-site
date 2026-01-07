@@ -32,7 +32,7 @@ theme = 'PaperMod'
 
   [params.homeInfoParams]
    Title = "活動記録"
-   Content = "東京科学大学 お茶の水コンピュータ部の活動ブログです。"
+   Content = "東京科学大学 お茶の水コンピュータ部の公式サイトです。"
 
   [params.label]
     text = "東京科学大学<br>お茶の水コンピュータ部"
