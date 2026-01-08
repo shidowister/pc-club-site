@@ -1,48 +1,61 @@
-<script src="https://giscus.app/client.js"
-        data-repo="shidowister/ist-md-pc-club-site"
-        data-repo-id="R_kgDOQg0ojg"
-        data-category="General"
-        data-category-id="DIC_kwDOQg0ojs4C0htG"
-        data-mapping="title"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="light" 
-        data-lang="ja"
-        crossorigin="anonymous"
-        async>
-</script>
+<div class="giscus"></div>
 
 <script>
-    // Giscusのテーマを強制的に合わせる関数
-    function syncGiscusTheme() {
+    // 1. 設定情報（ここは変更しないでください）
+    const giscusConfig = {
+        repo: "shidowister/ist-md-pc-club-site",
+        repoId: "R_kgDOQg0ojg",
+        category: "General",
+        categoryId: "DIC_kwDOQg0ojs4C0htG",
+        mapping: "title",
+        reactionsEnabled: "1",
+        emitMetadata: "0",
+        inputPosition: "bottom",
+        lang: "ja",
+    };
+
+    // 2. 現在のテーマ（DarkかLightか）を判定する関数
+    function getCurrentTheme() {
+        return document.body.classList.contains('dark') ? 'dark' : 'light';
+    }
+
+    // 3. ページ読み込み時に、正しい設定でGiscusを生成して埋め込む
+    //    これなら最初から正しい色で表示されます！
+    const giscusScript = document.createElement("script");
+    giscusScript.src = "https://giscus.app/client.js";
+    giscusScript.setAttribute("data-repo", giscusConfig.repo);
+    giscusScript.setAttribute("data-repo-id", giscusConfig.repoId);
+    giscusScript.setAttribute("data-category", giscusConfig.category);
+    giscusScript.setAttribute("data-category-id", giscusConfig.categoryId);
+    giscusScript.setAttribute("data-mapping", giscusConfig.mapping);
+    giscusScript.setAttribute("data-reactions-enabled", giscusConfig.reactionsEnabled);
+    giscusScript.setAttribute("data-emit-metadata", giscusConfig.emitMetadata);
+    giscusScript.setAttribute("data-input-position", giscusConfig.inputPosition);
+    giscusScript.setAttribute("data-lang", giscusConfig.lang);
+    giscusScript.setAttribute("data-theme", getCurrentTheme()); // ★ここで現在の色をセット
+    giscusScript.crossOrigin = "anonymous";
+    giscusScript.async = true;
+    
+    // 箱の中にスクリプトを入れる
+    document.querySelector(".giscus").appendChild(giscusScript);
+
+
+    // 4. その後、テーマ切り替えボタンが押された時の対策（監視カメラ）
+    const observer = new MutationObserver(function() {
         const iframe = document.querySelector('iframe.giscus-frame');
         if (!iframe) return;
-
-        // PaperModの現在の状態（bodyにdarkクラスがあるか）で判定
-        const isDark = document.body.classList.contains('dark');
-        const theme = isDark ? 'dark' : 'light';
-
-        // Giscusに命令を送信
+        
+        // テーマが変わったらGiscusに通知
+        const newTheme = getCurrentTheme();
         iframe.contentWindow.postMessage({
             giscus: {
                 setConfig: {
-                    theme: theme
+                    theme: newTheme
                 }
             }
         }, 'https://giscus.app');
-    }
-
-    // 1. 【監視カメラ】bodyのクラス変更を常時監視する
-    // これにより、ボタンを押した瞬間確実に反応します
-    const observer = new MutationObserver(syncGiscusTheme);
-    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
-
-    // 2. 【初期化】Giscusが読み込まれたタイミングで現在の色を適用する
-    window.addEventListener('message', function (event) {
-        if (event.origin === 'https://giscus.app' && event.data.giscus) {
-            syncGiscusTheme();
-        }
     });
+    
+    // 監視開始
+    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
 </script>
