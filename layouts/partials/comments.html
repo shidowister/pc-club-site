@@ -1,21 +1,39 @@
 <div class="giscus"></div>
 
 <script>
-    // 1. PaperModの「記憶」を直接読み取ってテーマを決める関数
-    function getGiscusTheme() {
-        // ブラウザに保存されたPaperModの設定を見る
+    // -------------------------------------------------------------------
+    // 1. 【初期表示用】 保存された設定から正しいテーマを取得する関数
+    // -------------------------------------------------------------------
+    function getInitialTheme() {
         const localTheme = localStorage.getItem("pref-theme");
-        
-        // 設定が「dark」なら迷わずdark
         if (localTheme === "dark") return "dark";
-        // 設定が「light」なら迷わずlight
         if (localTheme === "light") return "light";
-        
-        // 設定がない（自動）場合は、OSの設定を見る
         return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
     }
 
-    // 2. 設定
+    // -------------------------------------------------------------------
+    // 2. 【切り替え用】 Giscusに新しいテーマを通知する関数
+    // -------------------------------------------------------------------
+    function updateGiscusTheme() {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+
+        // 現在の画面の状態（bodyタグのclass）を見て、darkかlightかを決める
+        const theme = document.body.classList.contains('dark') ? 'dark' : 'light';
+
+        // Giscusにメッセージを送信
+        iframe.contentWindow.postMessage({
+            giscus: {
+                setConfig: {
+                    theme: theme
+                }
+            }
+        }, 'https://giscus.app');
+    }
+
+    // -------------------------------------------------------------------
+    // 3. Giscus本体の読み込み（初期テーマをセットして開始）
+    // -------------------------------------------------------------------
     const giscusConfig = {
         repo: "shidowister/ist-md-pc-club-site",
         repoId: "R_kgDOQg0ojg",
@@ -28,44 +46,32 @@
         lang: "ja",
     };
 
-    // 3. Giscusの読み込み（ローカルストレージの判定結果を使う）
     const giscusScript = document.createElement("script");
     giscusScript.src = "https://giscus.app/client.js";
-    giscusScript.setAttribute("data-repo", giscusConfig.repo);
-    giscusScript.setAttribute("data-repo-id", giscusConfig.repoId);
-    giscusScript.setAttribute("data-category", giscusConfig.category);
-    giscusScript.setAttribute("data-category-id", giscusConfig.categoryId);
-    giscusScript.setAttribute("data-mapping", giscusConfig.mapping);
-    giscusScript.setAttribute("data-reactions-enabled", giscusConfig.reactionsEnabled);
-    giscusScript.setAttribute("data-emit-metadata", giscusConfig.emitMetadata);
-    giscusScript.setAttribute("data-input-position", giscusConfig.inputPosition);
-    giscusScript.setAttribute("data-lang", giscusConfig.lang);
-    
-    // ★ここが修正点：画面のクラスではなく、保存された設定を使う
-    giscusScript.setAttribute("data-theme", getGiscusTheme());
-    
+    Object.keys(giscusConfig).forEach(key => {
+        giscusScript.setAttribute("data-" + key.replace(/([A-Z])/g, "-$1").toLowerCase(), giscusConfig[key]);
+    });
+    // ★ここで初期テーマを適用（再読み込み時のズレ防止）
+    giscusScript.setAttribute("data-theme", getInitialTheme());
     giscusScript.crossOrigin = "anonymous";
     giscusScript.async = true;
     document.querySelector(".giscus").appendChild(giscusScript);
 
-    // 4. 切り替えボタンが押された時の動作（変更の監視）
-    const observer = new MutationObserver(function() {
-        const iframe = document.querySelector('iframe.giscus-frame');
-        if (!iframe) return;
-        
-        // 切り替え時はbodyのクラスを見るのが一番確実（ボタン押下後はクラスが変わるため）
-        const isDark = document.body.classList.contains('dark');
-        const newTheme = isDark ? 'dark' : 'light';
-        
-        iframe.contentWindow.postMessage({
-            giscus: {
-                setConfig: {
-                    theme: newTheme
-                }
-            }
-        }, 'https://giscus.app');
-    });
+
+    // -------------------------------------------------------------------
+    // 4. テーマ変更の検知（ここを強化しました）
+    // -------------------------------------------------------------------
     
-    // bodyタグのクラス変更を監視スタート
+    // 【作戦A】 画面のクラスが変わったら即座に更新を実行
+    const observer = new MutationObserver(updateGiscusTheme);
     observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+
+    // 【作戦B】 テーマ切り替えボタン（#theme-toggle）がクリックされたら念押しで実行
+    const themeToggle = document.querySelector("#theme-toggle");
+    if (themeToggle) {
+        themeToggle.addEventListener("click", function() {
+            // クラスの切り替えが終わるのを一瞬待ってから実行
+            setTimeout(updateGiscusTheme, 50);
+        });
+    }
 </script>
