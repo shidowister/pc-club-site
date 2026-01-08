@@ -2,84 +2,76 @@
 
 <script>
     // -------------------------------------------------------------------
-    // 1. 設定情報の定義
+    // 1. 現在のテーマ（Dark/Light）を判定する関数
     // -------------------------------------------------------------------
-    const giscusConfig = {
-        repo: "shidowister/ist-md-pc-club-site",
-        repoId: "R_kgDOQg0ojg",
-        category: "General",
-        categoryId: "DIC_kwDOQg0ojs4C0htG",
-        mapping: "title",
-        reactionsEnabled: "1",
-        emitMetadata: "0",
-        inputPosition: "bottom",
-        lang: "ja",
-    };
+    function getTargetTheme() {
+        // PaperModの保存された設定を取得
+        const savedTheme = localStorage.getItem("pref-theme");
 
-    // -------------------------------------------------------------------
-    // 2. 現在のテーマを判定する関数（localStorage最優先）
-    // -------------------------------------------------------------------
-    function getCurrentTheme() {
-        const localTheme = localStorage.getItem("pref-theme");
-        
-        // ローカルストレージに設定があればそれを使う
-        if (localTheme === "dark") return "dark";
-        if (localTheme === "light") return "light";
-        
-        // 設定がなければOSの設定を使う
-        return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        // 設定があればそれに従う
+        if (savedTheme === "dark") return "transparent_dark"; // ダーク時は背景透過
+        if (savedTheme === "light") return "light";
+
+        // 設定がないならOSの設定に従う
+        return window.matchMedia("(prefers-color-scheme: dark)").matches ? "transparent_dark" : "light";
     }
 
     // -------------------------------------------------------------------
-    // 3. Giscusに命令を送る関数
+    // 2. Giscusを「生成」する関数
+    //    (既存のものがあれば消して、新しく作り直す)
     // -------------------------------------------------------------------
-    function setGiscusTheme() {
-        const iframe = document.querySelector('iframe.giscus-frame');
-        if (!iframe) return;
-
-        // 最新のテーマを取得
-        const theme = getCurrentTheme();
-
-        // Giscusに送信
-        iframe.contentWindow.postMessage({
-            giscus: {
-                setConfig: {
-                    theme: theme
-                }
-            }
-        }, 'https://giscus.app');
+    function loadGiscus() {
+        const container = document.querySelector(".giscus");
         
-        console.log(`[Giscus Debug] Theme update sent: ${theme}`);
+        // ★ここがポイント：一度中身を空っぽにする（破壊）
+        container.innerHTML = "";
+
+        // 新しい設定でスクリプトを作る（再生）
+        const giscusScript = document.createElement("script");
+        const theme = getTargetTheme(); // その瞬間の正しいテーマを取得
+
+        // 基本設定
+        const config = {
+            "src": "https://giscus.app/client.js",
+            "data-repo": "shidowister/ist-md-pc-club-site",
+            "data-repo-id": "R_kgDOQg0ojg",
+            "data-category": "General",
+            "data-category-id": "DIC_kwDOQg0ojs4C0htG",
+            "data-mapping": "title",
+            "data-strict": "0",
+            "data-reactions-enabled": "1",
+            "data-emit-metadata": "0",
+            "data-input-position": "bottom",
+            "data-lang": "ja",
+            "data-theme": theme, // ★ここで最新のテーマをセット
+            "crossorigin": "anonymous",
+            "async": ""
+        };
+
+        // 属性を付与
+        Object.keys(config).forEach(key => {
+            giscusScript.setAttribute(key, config[key]);
+        });
+
+        // 箱に追加（これで表示される）
+        container.appendChild(giscusScript);
+        
+        console.log(`[Giscus] Reloaded with theme: ${theme}`);
     }
 
     // -------------------------------------------------------------------
-    // 4. 初期ロード（Giscusの生成）
+    // 3. 実行タイミングの設定
     // -------------------------------------------------------------------
-    const initialTheme = getCurrentTheme();
-    const giscusScript = document.createElement("script");
-    giscusScript.src = "https://giscus.app/client.js";
     
-    // 設定を展開
-    Object.keys(giscusConfig).forEach(key => {
-        giscusScript.setAttribute("data-" + key.replace(/([A-Z])/g, "-$1").toLowerCase(), giscusConfig[key]);
-    });
-    
-    // 初期テーマをセット
-    giscusScript.setAttribute("data-theme", initialTheme);
-    giscusScript.crossOrigin = "anonymous";
-    giscusScript.async = true;
-    document.querySelector(".giscus").appendChild(giscusScript);
-    
-    console.log(`[Giscus Debug] Initial load with: ${initialTheme}`);
+    // ① ページを開いた時：即座にロード
+    loadGiscus();
 
-    // -------------------------------------------------------------------
-    // 5. ボタン切り替え時の動作（少し待ってから実行）
-    // -------------------------------------------------------------------
+    // ② ボタンを押した時：Giscusをリロードさせる
     const themeToggle = document.querySelector('#theme-toggle');
     if (themeToggle) {
         themeToggle.addEventListener('click', () => {
-            // PaperModの処理が終わるのを300ms待つ（時間を少し伸ばしました）
-            setTimeout(setGiscusTheme, 300);
+            // PaperModがlocalstorageを書き換えるのを一瞬待つ
+            setTimeout(loadGiscus, 200);
         });
     }
 </script>
