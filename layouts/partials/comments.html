@@ -13,3 +13,36 @@
         crossorigin="anonymous"
         async>
 </script>
+
+<script>
+    // 1. Giscusにテーマ変更命令を送る関数
+    function setGiscusTheme() {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+
+        // PaperModの現在のモード（bodyにdarkクラスがあるか）を確認
+        const isDark = document.body.classList.contains('dark');
+        
+        // メッセージを送信
+        const theme = isDark ? 'dark' : 'light';
+        iframe.contentWindow.postMessage({
+            giscus: {
+                setConfig: {
+                    theme: theme
+                }
+            }
+        }, 'https://giscus.app');
+    }
+
+    // 2. テーマ切り替えボタン（#theme-toggle）が押されたら実行
+    const themeToggle = document.querySelector('#theme-toggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            // クラスが切り替わるのを少しだけ待ってから命令を送る
+            setTimeout(setGiscusTheme, 200);
+        });
+    }
+
+    // 3. ページ読み込み時にも一度確認して同期する
+    window.addEventListener('load', setGiscusTheme);
+</script>
