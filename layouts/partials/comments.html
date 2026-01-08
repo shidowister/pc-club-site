@@ -1,49 +1,80 @@
-<script src="https://giscus.app/client.js"
-        data-repo="shidowister/ist-md-pc-club-site"
-        data-repo-id="R_kgDOQg0ojg"
-        data-category="General"
-        data-category-id="DIC_kwDOQg0ojs4C0htG"
-        data-mapping="title"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="preferred_color_scheme"
-        data-lang="ja"
-        crossorigin="anonymous"
-        async>
-</script>
+<div class="giscus"></div>
 
 <script>
-    // ページ右上の「月/太陽」ボタンを探す
-    const themeToggle = document.querySelector('#theme-toggle');
+    // -------------------------------------------------------------------
+    // 1. 【初期設定】 PaperModの記憶（localStorage）を最優先で確認する
+    // -------------------------------------------------------------------
+    function getGiscusTheme() {
+        // PaperModが保存した設定を読み取る
+        const theme = localStorage.getItem("pref-theme");
+        
+        // 1. サイトの設定が "dark" なら、OSに関係なくダーク
+        if (theme === "dark") return "transparent_dark";
+        
+        // 2. サイトの設定が "light" なら、OSに関係なくライト
+        if (theme === "light") return "light";
+        
+        // 3. 設定がない（初回訪問など）場合は、OSの設定に従う
+        return window.matchMedia("(prefers-color-scheme: dark)").matches ? "transparent_dark" : "light";
+    }
 
-    // ボタンが存在する場合のみ処理を実行
+    // -------------------------------------------------------------------
+    // 2. 【変更命令】 Giscusにテーマ変更を通知する関数
+    // -------------------------------------------------------------------
+    function setGiscusTheme() {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+
+        // 現在の画面がダークモードかどうか（bodyのクラス）を確認
+        const isDark = document.body.classList.contains('dark');
+        const newTheme = isDark ? 'transparent_dark' : 'light';
+
+        // Giscusに送信
+        iframe.contentWindow.postMessage({
+            giscus: {
+                setConfig: {
+                    theme: newTheme
+                }
+            }
+        }, 'https://giscus.app');
+    }
+
+    // -------------------------------------------------------------------
+    // 3. Giscus本体を動的に生成して読み込む
+    // -------------------------------------------------------------------
+    const giscusAttributes = {
+        "src": "https://giscus.app/client.js",
+        "data-repo": "shidowister/ist-md-pc-club-site",
+        "data-repo-id": "R_kgDOQg0ojg",
+        "data-category": "General",
+        "data-category-id": "DIC_kwDOQg0ojs4C0htG",
+        "data-mapping": "title",
+        "data-strict": "0",
+        "data-reactions-enabled": "1",
+        "data-emit-metadata": "0",
+        "data-input-position": "bottom",
+        "data-lang": "ja",
+        "data-theme": getGiscusTheme(), // ★ここで記憶に基づいた正しいテーマをセット
+        "crossorigin": "anonymous",
+        "async": ""
+    };
+
+    // スクリプトタグを作って埋め込む
+    const giscusScript = document.createElement("script");
+    Object.keys(giscusAttributes).forEach(key => {
+        giscusScript.setAttribute(key, giscusAttributes[key]);
+    });
+    document.querySelector(".giscus").appendChild(giscusScript);
+
+
+    // -------------------------------------------------------------------
+    // 4. ボタン切り替え時の動作
+    // -------------------------------------------------------------------
+    const themeToggle = document.querySelector('#theme-toggle');
     if (themeToggle) {
         themeToggle.addEventListener('click', () => {
-            
-            // 0.2秒待つ（PaperModが色を変えるのを待つため）
-            setTimeout(() => {
-                const iframe = document.querySelector('iframe.giscus-frame');
-                if (!iframe) return;
-
-                // 現在、画面が「dark」クラスを持っているか確認
-                const isDark = document.body.classList.contains('dark');
-                
-                // Giscusに送るテーマ名を決定
-                // PaperModのダークモードには 'transparent_dark' が馴染みます
-                const newTheme = isDark ? 'transparent_dark' : 'light';
-
-                // Giscusに「色を変えろ！」と命令（postMessage）
-                iframe.contentWindow.postMessage({
-                    giscus: {
-                        setConfig: {
-                            theme: newTheme
-                        }
-                    }
-                }, 'https://giscus.app');
-                
-            }, 200); // 200ミリ秒 = 0.2秒
+            // PaperModの色が変わるのを0.2秒待ってからGiscusも変える
+            setTimeout(setGiscusTheme, 200);
         });
     }
 </script>
