@@ -8,23 +8,23 @@
         data-reactions-enabled="1"
         data-emit-metadata="0"
         data-input-position="bottom"
-        data-theme="preferred_color_scheme"
+        data-theme="light" 
         data-lang="ja"
         crossorigin="anonymous"
         async>
 </script>
 
 <script>
-    // 1. Giscusにテーマ変更命令を送る関数
-    function setGiscusTheme() {
+    // Giscusのテーマを強制的に合わせる関数
+    function syncGiscusTheme() {
         const iframe = document.querySelector('iframe.giscus-frame');
         if (!iframe) return;
 
-        // PaperModの現在のモード（bodyにdarkクラスがあるか）を確認
+        // PaperModの現在の状態（bodyにdarkクラスがあるか）で判定
         const isDark = document.body.classList.contains('dark');
-        
-        // メッセージを送信
         const theme = isDark ? 'dark' : 'light';
+
+        // Giscusに命令を送信
         iframe.contentWindow.postMessage({
             giscus: {
                 setConfig: {
@@ -34,15 +34,15 @@
         }, 'https://giscus.app');
     }
 
-    // 2. テーマ切り替えボタン（#theme-toggle）が押されたら実行
-    const themeToggle = document.querySelector('#theme-toggle');
-    if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
-            // クラスが切り替わるのを少しだけ待ってから命令を送る
-            setTimeout(setGiscusTheme, 200);
-        });
-    }
+    // 1. 【監視カメラ】bodyのクラス変更を常時監視する
+    // これにより、ボタンを押した瞬間確実に反応します
+    const observer = new MutationObserver(syncGiscusTheme);
+    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
 
-    // 3. ページ読み込み時にも一度確認して同期する
-    window.addEventListener('load', setGiscusTheme);
+    // 2. 【初期化】Giscusが読み込まれたタイミングで現在の色を適用する
+    window.addEventListener('message', function (event) {
+        if (event.origin === 'https://giscus.app' && event.data.giscus) {
+            syncGiscusTheme();
+        }
+    });
 </script>
