@@ -18,7 +18,7 @@ comments: true
 
 大学の裏門から出て、道を渡ってすぐ、**神田明神（神田神社）** です。
 
-![神田明神](/ist-md-pc-club-site/images/kanda-myoujin.jpg)
+![神田明神](/ist-md-pc-club-site/images/kanda-myoujin.png)
 
 ここは江戸の総鎮守として有名ですが、秋葉原に近い土地柄、「IT・ビジネスの守り神」としても知られています。
 
