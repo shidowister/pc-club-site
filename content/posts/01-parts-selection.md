@@ -17,7 +17,7 @@ comments: true
 
 ## 現状のpcの紹介
 ### 1. 本体
-![本体の外観](/ist-md-pc-club-site/images/Z4G4_normal.png)
+![本体の外観](/ist-md-pc-club-site/images/Z4G4_normal.jpg)
 
 HP社の業務用ワークステーション Z4G4。
 法人向けとしてはエントリーミドルクラスで、発売当時の新品価格は構成にもよりますが、30万から40万ほどです。
