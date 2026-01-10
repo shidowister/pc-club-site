@@ -2,10 +2,165 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Tags on 東京科学大学　お茶の水コンピュータ部</title>
-    <link>http://localhost:1313/tags/</link>
+    <link>http://localhost:1313/ist-md-pc-club-site/tags/</link>
     <description>Recent content in Tags on 東京科学大学　お茶の水コンピュータ部</description>
     <generator>Hugo -- 0.152.2</generator>
     <language>en-us</language>
-    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 07 Jan 2026 12:00:00 +0900</lastBuildDate>
+    <atom:link href="http://localhost:1313/ist-md-pc-club-site/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>お守り</title>
+      <link>http://localhost:1313/ist-md-pc-club-site/tags/%E3%81%8A%E5%AE%88%E3%82%8A/</link>
+      <pubDate>Wed, 07 Jan 2026 12:00:00 +0900</pubDate>
+      <guid>http://localhost:1313/ist-md-pc-club-site/tags/%E3%81%8A%E5%AE%88%E3%82%8A/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>お茶の水</title>
+      <link>http://localhost:1313/ist-md-pc-club-site/tags/%E3%81%8A%E8%8C%B6%E3%81%AE%E6%B0%B4/</link>
+      <pubDate>Wed, 07 Jan 2026 12:00:00 +0900</pubDate>
+      <guid>http://localhost:1313/ist-md-pc-club-site/tags/%E3%81%8A%E8%8C%B6%E3%81%AE%E6%B0%B4/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>東京科学大学</title>
+      <link>http://localhost:1313/ist-md-pc-club-site/tags/%E6%9D%B1%E4%BA%AC%E7%A7%91%E5%AD%A6%E5%A4%A7%E5%AD%A6/</link>
+      <pubDate>Wed, 07 Jan 2026 12:00:00 +0900</pubDate>
+      <guid>http://localhost:1313/ist-md-pc-club-site/tags/%E6%9D%B1%E4%BA%AC%E7%A7%91%E5%AD%A6%E5%A4%A7%E5%AD%A6/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>神田明神</title>
+      <link>http://localhost:1313/ist-md-pc-club-site/tags/%E7%A5%9E%E7%94%B0%E6%98%8E%E7%A5%9E/</link>
+      <pubDate>Wed, 07 Jan 2026 12:00:00 +0900</pubDate>
+      <guid>http://localhost:1313/ist-md-pc-club-site/tags/%E7%A5%9E%E7%94%B0%E6%98%8E%E7%A5%9E/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>ECC</title>
+      <link>http://localhost:1313/ist-md-pc-club-site/tags/ecc/</link>
+      <pubDate>Fri, 26 Dec 2025 20:00:00 +0900</pubDate>
+      <guid>http://localhost:1313/ist-md-pc-club-site/tags/ecc/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>HP Z4 G4</title>
+      <link>http://localhost:1313/ist-md-pc-club-site/tags/hp-z4-g4/</link>
+      <pubDate>Fri, 26 Dec 2025 20:00:00 +0900</pubDate>
+      <guid>http://localhost:1313/ist-md-pc-club-site/tags/hp-z4-g4/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>サーバー</title>
+      <link>http://localhost:1313/ist-md-pc-club-site/tags/%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC/</link>
+      <pubDate>Fri, 26 Dec 2025 20:00:00 +0900</pubDate>
+      <guid>http://localhost:1313/ist-md-pc-club-site/tags/%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>メモリ</title>
+      <link>http://localhost:1313/ist-md-pc-club-site/tags/%E3%83%A1%E3%83%A2%E3%83%AA/</link>
+      <pubDate>Fri, 26 Dec 2025 20:00:00 +0900</pubDate>
+      <guid>http://localhost:1313/ist-md-pc-club-site/tags/%E3%83%A1%E3%83%A2%E3%83%AA/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>GPU</title>
+      <link>http://localhost:1313/ist-md-pc-club-site/tags/gpu/</link>
+      <pubDate>Tue, 16 Dec 2025 12:00:00 +0900</pubDate>
+      <guid>http://localhost:1313/ist-md-pc-club-site/tags/gpu/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>NVIDIA</title>
+      <link>http://localhost:1313/ist-md-pc-club-site/tags/nvidia/</link>
+      <pubDate>Tue, 16 Dec 2025 12:00:00 +0900</pubDate>
+      <guid>http://localhost:1313/ist-md-pc-club-site/tags/nvidia/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>RTX 4070</title>
+      <link>http://localhost:1313/ist-md-pc-club-site/tags/rtx-4070/</link>
+      <pubDate>Tue, 16 Dec 2025 12:00:00 +0900</pubDate>
+      <guid>http://localhost:1313/ist-md-pc-club-site/tags/rtx-4070/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>グラボ</title>
+      <link>http://localhost:1313/ist-md-pc-club-site/tags/%E3%82%B0%E3%83%A9%E3%83%9C/</link>
+      <pubDate>Tue, 16 Dec 2025 12:00:00 +0900</pubDate>
+      <guid>http://localhost:1313/ist-md-pc-club-site/tags/%E3%82%B0%E3%83%A9%E3%83%9C/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>お茶の水祭</title>
+      <link>http://localhost:1313/ist-md-pc-club-site/tags/%E3%81%8A%E8%8C%B6%E3%81%AE%E6%B0%B4%E7%A5%AD/</link>
+      <pubDate>Thu, 11 Dec 2025 12:00:00 +0900</pubDate>
+      <guid>http://localhost:1313/ist-md-pc-club-site/tags/%E3%81%8A%E8%8C%B6%E3%81%AE%E6%B0%B4%E7%A5%AD/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>わらび餅ドリンク</title>
+      <link>http://localhost:1313/ist-md-pc-club-site/tags/%E3%82%8F%E3%82%89%E3%81%B3%E9%A4%85%E3%83%89%E3%83%AA%E3%83%B3%E3%82%AF/</link>
+      <pubDate>Thu, 11 Dec 2025 12:00:00 +0900</pubDate>
+      <guid>http://localhost:1313/ist-md-pc-club-site/tags/%E3%82%8F%E3%82%89%E3%81%B3%E9%A4%85%E3%83%89%E3%83%AA%E3%83%B3%E3%82%AF/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>合同企画</title>
+      <link>http://localhost:1313/ist-md-pc-club-site/tags/%E5%90%88%E5%90%8C%E4%BC%81%E7%94%BB/</link>
+      <pubDate>Thu, 11 Dec 2025 12:00:00 +0900</pubDate>
+      <guid>http://localhost:1313/ist-md-pc-club-site/tags/%E5%90%88%E5%90%8C%E4%BC%81%E7%94%BB/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>学祭</title>
+      <link>http://localhost:1313/ist-md-pc-club-site/tags/%E5%AD%A6%E7%A5%AD/</link>
+      <pubDate>Thu, 11 Dec 2025 12:00:00 +0900</pubDate>
+      <guid>http://localhost:1313/ist-md-pc-club-site/tags/%E5%AD%A6%E7%A5%AD/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>CPU</title>
+      <link>http://localhost:1313/ist-md-pc-club-site/tags/cpu/</link>
+      <pubDate>Mon, 08 Dec 2025 18:00:00 +0900</pubDate>
+      <guid>http://localhost:1313/ist-md-pc-club-site/tags/cpu/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>LGA2066</title>
+      <link>http://localhost:1313/ist-md-pc-club-site/tags/lga2066/</link>
+      <pubDate>Mon, 08 Dec 2025 18:00:00 +0900</pubDate>
+      <guid>http://localhost:1313/ist-md-pc-club-site/tags/lga2066/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>W-2235</title>
+      <link>http://localhost:1313/ist-md-pc-club-site/tags/w-2235/</link>
+      <pubDate>Mon, 08 Dec 2025 18:00:00 +0900</pubDate>
+      <guid>http://localhost:1313/ist-md-pc-club-site/tags/w-2235/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Xeon</title>
+      <link>http://localhost:1313/ist-md-pc-club-site/tags/xeon/</link>
+      <pubDate>Mon, 08 Dec 2025 18:00:00 +0900</pubDate>
+      <guid>http://localhost:1313/ist-md-pc-club-site/tags/xeon/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>ジャンク</title>
+      <link>http://localhost:1313/ist-md-pc-club-site/tags/%E3%82%B8%E3%83%A3%E3%83%B3%E3%82%AF/</link>
+      <pubDate>Tue, 02 Dec 2025 12:00:00 +0900</pubDate>
+      <guid>http://localhost:1313/ist-md-pc-club-site/tags/%E3%82%B8%E3%83%A3%E3%83%B3%E3%82%AF/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>ワークステーション</title>
+      <link>http://localhost:1313/ist-md-pc-club-site/tags/%E3%83%AF%E3%83%BC%E3%82%AF%E3%82%B9%E3%83%86%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/</link>
+      <pubDate>Tue, 02 Dec 2025 12:00:00 +0900</pubDate>
+      <guid>http://localhost:1313/ist-md-pc-club-site/tags/%E3%83%AF%E3%83%BC%E3%82%AF%E3%82%B9%E3%83%86%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>

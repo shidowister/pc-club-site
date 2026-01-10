@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>NVIDIA on 東京科学大学　お茶の水コンピュータ部</title>
+    <link>http://localhost:1313/ist-md-pc-club-site/tags/nvidia/</link>
+    <description>Recent content in NVIDIA on 東京科学大学　お茶の水コンピュータ部</description>
+    <generator>Hugo -- 0.152.2</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 16 Dec 2025 12:00:00 +0900</lastBuildDate>
+    <atom:link href="http://localhost:1313/ist-md-pc-club-site/tags/nvidia/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【ジャンク再生計画 Vol.3】8万円の攻防戦。RTX 4070を選んだ選択の勝利</title>
+      <link>http://localhost:1313/ist-md-pc-club-site/posts/04-gpu-selection/</link>
+      <pubDate>Tue, 16 Dec 2025 12:00:00 +0900</pubDate>
+      <guid>http://localhost:1313/ist-md-pc-club-site/posts/04-gpu-selection/</guid>
+      <description>&lt;p&gt;CPUが決まり、次はいよいよゲーミングPCの心臓部、&lt;strong&gt;GPU（グラフィックボード）&lt;/strong&gt; の選定です。&lt;/p&gt;
+&lt;p&gt;結論から言いましょう。&lt;br&gt;
+今回の「ジャンク再生計画」、実はこのパーツだけは&lt;strong&gt;1年前（2024年12月）&lt;/strong&gt; に確保してありました。&lt;br&gt;
+当時、パソコン工房のセールで &lt;strong&gt;78,000円&lt;/strong&gt; という破格で手に入れた &lt;strong&gt;「ASUS RTX 4070 Dual OC Edition」&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;RTX 50シリーズが登場し、相場が高騰、そして40シリーズは入手困難な今（2025年末）から振り返ると、あの時の判断はまさにファインプレーでした。&lt;/p&gt;
+&lt;hr&gt;
+&lt;blockquote&gt;
+&lt;p&gt;？？？（GQ）『あの時のひらめきが全てを変えた気がする』&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;p&gt;今回は、なぜ私が &lt;strong&gt;赤い「RX-7800xt」の誘惑を断ち切り、この「RTX4070」を選んだのか&lt;/strong&gt;。その選定ロジックを記録します。&lt;/p&gt;
+&lt;h2 id=&#34;1-現状と要件定義&#34;&gt;1. 現状と要件定義&lt;/h2&gt;
+&lt;p&gt;もともと、このワークステーション（HP Z4 G4）に入っていたのは &lt;strong&gt;「NVIDIA Quadro P620」&lt;/strong&gt; でした。&lt;br&gt;
+画面を映すだけなら優秀ですが、3D性能は「内蔵GPUに毛が生えた程度」。&lt;/p&gt;
+&lt;p&gt;これでは最新の3Dゲームには太刀打ちできません。&lt;br&gt;
+一応VRAMが2GBあり、性能もGTX950弱ぐらいあるので、任天堂switchで動くようなゲームはなんとか動きます。&lt;/p&gt;
+&lt;p&gt;テストしたところ、エースコンバット7、モンハンライズ・サンブレイクはfpsが安定しないながらも一応動きました。&lt;/p&gt;
+&lt;p&gt;今回の要件は以下の通り。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;予算上限:&lt;/strong&gt; &lt;strong&gt;8万円&lt;/strong&gt;（絶対防衛ライン）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;用途:&lt;/strong&gt; 重量級ゲーム、VR (MSFS)、そして &lt;strong&gt;AI学習&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;目標ランク:&lt;/strong&gt; ローエンドは嫌だ。最低でも「ミドル〜アッパーミドル」が欲しい。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;2-候補者たちとメモリバス幅の罠&#34;&gt;2. 候補者たちと「メモリバス幅」の罠&lt;/h2&gt;
+&lt;p&gt;予算8万円（2024年当時）で買える候補は以下の4つでした。&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;モデル&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;VRAM&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;バス幅&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;当時の相場&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;判定&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;RTX 4060&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;8GB&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;128-bit&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;4~5万円&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;VRAM不足で却下&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;RTX 4060 Ti (8GB)&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;8GB&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;128-bit&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;5.5~6.5万円&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;同上&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;RTX 4060 Ti (16GB)&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;16GB&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;128-bit&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;7~8万円&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;VRAMは神だが…惜しい&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;RTX 4070&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;12GB&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;192-bit&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;8~9万円&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;本命&lt;/strong&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;ここで重要になるのが、&lt;strong&gt;「VRAM容量」&lt;/strong&gt; と &lt;strong&gt;「メモリバス幅」&lt;/strong&gt; の関係です。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

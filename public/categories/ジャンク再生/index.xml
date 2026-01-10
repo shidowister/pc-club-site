@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>ジャンク再生 on 東京科学大学　お茶の水コンピュータ部</title>
+    <link>http://localhost:1313/ist-md-pc-club-site/categories/%E3%82%B8%E3%83%A3%E3%83%B3%E3%82%AF%E5%86%8D%E7%94%9F/</link>
+    <description>Recent content in ジャンク再生 on 東京科学大学　お茶の水コンピュータ部</description>
+    <generator>Hugo -- 0.152.2</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 26 Dec 2025 20:00:00 +0900</lastBuildDate>
+    <atom:link href="http://localhost:1313/ist-md-pc-club-site/categories/%E3%82%B8%E3%83%A3%E3%83%B3%E3%82%AF%E5%86%8D%E7%94%9F/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【ジャンク再生計画 Vol.4】「ECCメモリ」って何？ サーバー用メモリの安さと罠</title>
+      <link>http://localhost:1313/ist-md-pc-club-site/posts/05-memory-ecc/</link>
+      <pubDate>Fri, 26 Dec 2025 20:00:00 +0900</pubDate>
+      <guid>http://localhost:1313/ist-md-pc-club-site/posts/05-memory-ecc/</guid>
+      <description>&lt;p&gt;CPU、GPUときて、今回は &lt;strong&gt;「メモリ」&lt;/strong&gt; です。&lt;br&gt;
+もともとこのZ4G4にはmicron製のDDR4の8GBのメモリが２枚挿さっていました。&lt;/p&gt;
+&lt;p&gt;普通のパソコンなら「DDR4の8GBをもう何枚か買えばOK！」で終わる話ですが、相手はワークステーションでCPUはXeon。そう簡単にはいきません。&lt;/p&gt;
+&lt;p&gt;今回は、我々を悩ませる &lt;strong&gt;「ECCメモリ」&lt;/strong&gt; と、その種類のについて解説します。&lt;/p&gt;
+&lt;h2 id=&#34;1-そもそもeccメモリとは&#34;&gt;1. そもそも「ECCメモリ」とは？&lt;/h2&gt;
+&lt;p&gt;普通のPC用メモリ（Non-ECC）と違い、&lt;strong&gt;ECC（Error Correction Code）&lt;/strong&gt; メモリには「データのエラーを自動で訂正する機能」がついています。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;普通:&lt;/strong&gt; なんらかのエラーでデータが1ビット化けた → &lt;strong&gt;ブルースクリーンで落ちる&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ECC:&lt;/strong&gt; データが化けた → &lt;strong&gt;自動で直して動き続ける&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;「24時間365日止まってはいけない」サーバーやワークステーションのための機能です。&lt;br&gt;
+この機能のおかげで、Xeonマシンは非常に安定しているわけですね。&lt;/p&gt;
+&lt;p&gt;このECC機能の影響で、動作が1クロック分遅くなるという弱点はありますが、大体2000Mhzを超える動作の1クロックは誤差の範囲です。&lt;/p&gt;
+&lt;h2 id=&#34;2-registeredとunbufferedの罠&#34;&gt;2. 「Registered」と「Unbuffered」の罠&lt;/h2&gt;
+&lt;p&gt;ここからが本題です。&lt;br&gt;
+実はXeonで使えるECCメモリには、大きく分けて2種類あります。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;ECC UDIMM (Unbuffered):&lt;/strong&gt; 普通のメモリにECC機能がついただけのもの。一部のCore iシリーズや一部のRyzenでも使えたりする。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ECC RDIMM (Registered):&lt;/strong&gt; 信号を整える「レジスタ」チップが載ったガチ業務用。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;この2つ、&lt;strong&gt;形は同じDDR4なのに混ぜると動きません。&lt;/strong&gt;&lt;br&gt;
+そしてマザーボードによって「どっちしか対応していない」という縛りがあったりします。&lt;/p&gt;
+&lt;p&gt;今回のHP Z4 G4は、公式には &lt;strong&gt;「RDIMM」&lt;/strong&gt; が推奨されています。（UDIMMも動く場合がありますが、混在は不可）&lt;/p&gt;
+&lt;h2 id=&#34;3-なぜサーバー用メモリは安いのか&#34;&gt;3. なぜサーバー用メモリは安いのか？&lt;/h2&gt;
+&lt;p&gt;ヤフオクやメルカリを見ると、中古なら普通のDDR4メモリより、&lt;strong&gt;サーバー用（RDIMM）の方がちょっと安い&lt;/strong&gt;ことに気づきます。&lt;br&gt;
+「8GBで1000円！？」みたいなことがたまにあります。&lt;/p&gt;
+&lt;p&gt;理由は単純。&lt;br&gt;
+&lt;strong&gt;「データセンターの世代交代で大量に廃棄されるから」&lt;/strong&gt; そして &lt;strong&gt;「普通のPCには刺さらないから」&lt;/strong&gt; です。&lt;/p&gt;
+&lt;p&gt;需要と供給の関係で、我々のようなジャンクPC愛好家にとって、RDIMMは &lt;strong&gt;「宝の山」&lt;/strong&gt; なのです。&lt;/p&gt;
+&lt;p&gt;もちろん業務用なので、普通に買うとびっくりするぐらい高いです。&lt;/p&gt;
+&lt;h2 id=&#34;4-今回の戦利品&#34;&gt;4. 今回の戦利品&lt;/h2&gt;
+&lt;p&gt;というわけで、今回確保したメモリがこちら。&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Sk hynix DDR4 ECC RDIMM&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/ist-md-pc-club-site/images/ecc-memory.jpeg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Sk hynix製 DDR4-2666V ECC RDIMM 8GB × 3枚 = 24GB&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>【ジャンク再生計画 Vol.3】8万円の攻防戦。RTX 4070を選んだ選択の勝利</title>
+      <link>http://localhost:1313/ist-md-pc-club-site/posts/04-gpu-selection/</link>
+      <pubDate>Tue, 16 Dec 2025 12:00:00 +0900</pubDate>
+      <guid>http://localhost:1313/ist-md-pc-club-site/posts/04-gpu-selection/</guid>
+      <description>&lt;p&gt;CPUが決まり、次はいよいよゲーミングPCの心臓部、&lt;strong&gt;GPU（グラフィックボード）&lt;/strong&gt; の選定です。&lt;/p&gt;
+&lt;p&gt;結論から言いましょう。&lt;br&gt;
+今回の「ジャンク再生計画」、実はこのパーツだけは&lt;strong&gt;1年前（2024年12月）&lt;/strong&gt; に確保してありました。&lt;br&gt;
+当時、パソコン工房のセールで &lt;strong&gt;78,000円&lt;/strong&gt; という破格で手に入れた &lt;strong&gt;「ASUS RTX 4070 Dual OC Edition」&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;RTX 50シリーズが登場し、相場が高騰、そして40シリーズは入手困難な今（2025年末）から振り返ると、あの時の判断はまさにファインプレーでした。&lt;/p&gt;
+&lt;hr&gt;
+&lt;blockquote&gt;
+&lt;p&gt;？？？（GQ）『あの時のひらめきが全てを変えた気がする』&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;p&gt;今回は、なぜ私が &lt;strong&gt;赤い「RX-7800xt」の誘惑を断ち切り、この「RTX4070」を選んだのか&lt;/strong&gt;。その選定ロジックを記録します。&lt;/p&gt;
+&lt;h2 id=&#34;1-現状と要件定義&#34;&gt;1. 現状と要件定義&lt;/h2&gt;
+&lt;p&gt;もともと、このワークステーション（HP Z4 G4）に入っていたのは &lt;strong&gt;「NVIDIA Quadro P620」&lt;/strong&gt; でした。&lt;br&gt;
+画面を映すだけなら優秀ですが、3D性能は「内蔵GPUに毛が生えた程度」。&lt;/p&gt;
+&lt;p&gt;これでは最新の3Dゲームには太刀打ちできません。&lt;br&gt;
+一応VRAMが2GBあり、性能もGTX950弱ぐらいあるので、任天堂switchで動くようなゲームはなんとか動きます。&lt;/p&gt;
+&lt;p&gt;テストしたところ、エースコンバット7、モンハンライズ・サンブレイクはfpsが安定しないながらも一応動きました。&lt;/p&gt;
+&lt;p&gt;今回の要件は以下の通り。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;予算上限:&lt;/strong&gt; &lt;strong&gt;8万円&lt;/strong&gt;（絶対防衛ライン）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;用途:&lt;/strong&gt; 重量級ゲーム、VR (MSFS)、そして &lt;strong&gt;AI学習&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;目標ランク:&lt;/strong&gt; ローエンドは嫌だ。最低でも「ミドル〜アッパーミドル」が欲しい。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;2-候補者たちとメモリバス幅の罠&#34;&gt;2. 候補者たちと「メモリバス幅」の罠&lt;/h2&gt;
+&lt;p&gt;予算8万円（2024年当時）で買える候補は以下の4つでした。&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;モデル&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;VRAM&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;バス幅&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;当時の相場&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;判定&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;RTX 4060&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;8GB&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;128-bit&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;4~5万円&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;VRAM不足で却下&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;RTX 4060 Ti (8GB)&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;8GB&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;128-bit&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;5.5~6.5万円&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;同上&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;RTX 4060 Ti (16GB)&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;16GB&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;128-bit&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;7~8万円&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;VRAMは神だが…惜しい&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;RTX 4070&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;12GB&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;192-bit&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;8~9万円&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;本命&lt;/strong&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;ここで重要になるのが、&lt;strong&gt;「VRAM容量」&lt;/strong&gt; と &lt;strong&gt;「メモリバス幅」&lt;/strong&gt; の関係です。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>【ジャンク再生計画 Vol.2】LGA2066の罠とXeon選定のロジック</title>
+      <link>http://localhost:1313/ist-md-pc-club-site/posts/02-cpu-selection/</link>
+      <pubDate>Mon, 08 Dec 2025 18:00:00 +0900</pubDate>
+      <guid>http://localhost:1313/ist-md-pc-club-site/posts/02-cpu-selection/</guid>
+      <description>&lt;p&gt;前回紹介したベースマシン「HP Z4 G4」。&lt;br&gt;
+今回は、ゲーミングPCの頭脳となる &lt;strong&gt;CPUの換装&lt;/strong&gt; について、その選定プロセスを記録します。&lt;/p&gt;
+&lt;p&gt;「ソケットが合うから何でも載る」と思ったら大間違い。そこにはワークステーション特有の深い沼がありました。&lt;/p&gt;
+&lt;h2 id=&#34;1-マザーボードの仕様とc422の制約&#34;&gt;1. マザーボードの仕様と「C422」の制約&lt;/h2&gt;
+&lt;p&gt;まず、このマシンのソケットは &lt;strong&gt;LGA2066&lt;/strong&gt; です。&lt;br&gt;
+自作PCに詳しい方なら、「お、Core i9-10900Xとか、Core i7-9800Xといった『Core Xシリーズ』が載るやつじゃん！」と思うかもしれません。&lt;/p&gt;
+&lt;p&gt;私も最初はそう思いました。&lt;/p&gt;
+&lt;p&gt;しかし、Z4 G4のチップセットは &lt;strong&gt;「Intel C422」&lt;/strong&gt; です。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Intel X299チップセット:&lt;/strong&gt; コンシューマ向け。Core i9 / i7 Xシリーズに対応。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Intel C422チップセット:&lt;/strong&gt; 業務用。&lt;strong&gt;Xeon W-2000シリーズ専用。&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;そう、物理的にソケットの形状が同じでも、&lt;strong&gt;Core iシリーズは認識しない&lt;/strong&gt;のです（排他仕様）。&lt;br&gt;
+この時点で、高性能な中古のCore i9を載せる夢は断たれ、&lt;strong&gt;「Xeon W-2000シリーズ」&lt;/strong&gt; の中から選ぶことになりました。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ジーク・Xeon!&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;2-xeon-w-2000シリーズの型番を解読する&#34;&gt;2. Xeon W-2000シリーズの型番を解読する&lt;/h2&gt;
+&lt;p&gt;XeonのcpuはジオンのMS同様に種類が多くてわかりにくいので、今回のターゲットとなる「W-2000番台」の命名規則を整理しました。&lt;/p&gt;
+&lt;p&gt;例： &lt;strong&gt;Xeon W-2235&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;W:&lt;/strong&gt; Workstation向け（シングルソケット用）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;2:&lt;/strong&gt; シリーズ区分（メインストリーム）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;2:&lt;/strong&gt; 世代（1=Skylake-W, 2=Cascade Lake-W）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;35:&lt;/strong&gt; 性能ランク（数字が大きいほどコア数が増える）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Z4 G4の初期搭載CPUは「W-2102」だったので、Skylake-Wのエントリーモデルでした。&lt;br&gt;
+今回は、脆弱性対策が進み、クロックあたりの性能も微増している &lt;strong&gt;Cascade Lake-W / W-22xx&lt;/strong&gt; のものを中心に探すことにしました。&lt;/p&gt;
+&lt;h2 id=&#34;3-候補cpu比較ゲーミングに最適なのは誰だ&#34;&gt;3. 候補CPU比較：ゲーミングに最適なのは誰だ？&lt;/h2&gt;
+&lt;p&gt;ゲーム用途で最も重要なのは「コア数」よりも &lt;strong&gt;「クロック周波数」&lt;/strong&gt; です（厳密にはシングル性能）。&lt;br&gt;
+いくらコアが多くても、1コアあたりの速度が遅いとFPSが伸びません。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>【ジャンク再生計画 Vol.1】予算11万円でPS5 proに勝つ！現状編</title>
+      <link>http://localhost:1313/ist-md-pc-club-site/posts/01-parts-selection/</link>
+      <pubDate>Tue, 02 Dec 2025 12:00:00 +0900</pubDate>
+      <guid>http://localhost:1313/ist-md-pc-club-site/posts/01-parts-selection/</guid>
+      <description>&lt;p&gt;部員S藤が某所から貰ってきた5年落ちのワークステーション。&lt;br&gt;
+もともと業務用のミドルクラス機なので電源や拡張性など、ポテンシャルはあります。&lt;br&gt;
+このマシンのパーツを換装して、低価格でハイスペpcを目指します！&lt;/p&gt;
+&lt;h2 id=&#34;今回のコンセプト&#34;&gt;今回のコンセプト&lt;/h2&gt;
+&lt;p&gt;ただ組むだけじゃ面白くありません。今回のテーマはps5 pro以下の費用で、ps5 pro以上のスペック、汎用性を目指すことです。&lt;/p&gt;
+&lt;h2 id=&#34;現状のpcの紹介&#34;&gt;現状のpcの紹介&lt;/h2&gt;
+&lt;h3 id=&#34;1-本体&#34;&gt;1. 本体&lt;/h3&gt;
+&lt;p&gt;&lt;img alt=&#34;本体の外観&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/ist-md-pc-club-site/images/Z4G4_normal.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;HP社の業務用ワークステーション Z4G4。&lt;br&gt;
+法人向けとしてはエントリーミドルクラスで、発売当時の新品価格は構成にもよりますが、30万から40万ほどです。&lt;br&gt;
+ワークステーションのためcpuはxeonシリーズを使用し、gpuもquadroシリーズ、メモリもECCメモリを採用しています。&lt;br&gt;
+いわゆるミドルタワーで、電源や内部スペースには余裕があります。&lt;/p&gt;
+&lt;h3 id=&#34;2-cpu-xeon-w-2102&#34;&gt;2. cpu: [xeon w-2102]&lt;/h3&gt;
+&lt;p&gt;Z4G4で選べる最小構成のcpu。2017年発売。&lt;br&gt;
+14nmプロセスの、4コア 4スレッドのモデル。性能は高いとは言えませんが、xeonシリーズだけあって最大メモリは512GBまで対応しています。&lt;br&gt;
+性能的にはi5-7400より少し低いぐらい。　最近のゲームをプレイするのはちょっと厳しいです。&lt;/p&gt;
+&lt;h3 id=&#34;3-gpu-quadro-p620&#34;&gt;3. gpu: [quadro p620]&lt;/h3&gt;
+&lt;p&gt;ワークステーション用のquadroシリーズ。&lt;br&gt;
+TDPは40W。VRAMは2GB、ロープロ対応で、４系統のMini DisplayPortで4画面同時出力ができます。&lt;br&gt;
+ゲーミング性能はGTX950より少し低いぐらい。&lt;br&gt;
+最近のゲームには向きませんが、通常のビデオカードとしてみればロープロで発熱も少なく優秀と言えます。&lt;/p&gt;
+&lt;h3 id=&#34;4-電源&#34;&gt;4. 電源&lt;/h3&gt;
+&lt;p&gt;HPの専用品。750Wで多分80 plus gold。&lt;br&gt;
+一応ATX規格らしいですが、他のマザボで使えるのかは不明です。&lt;br&gt;
+グラボ用の電源ピンは6ピンが二つあります。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;次回、換装パーツの選定編。そもそもどんなパーツが使えるのか、どれぐらいアップデートできるのか!?&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

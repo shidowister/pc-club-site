@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>W-2235 on 東京科学大学　お茶の水コンピュータ部</title>
+    <link>http://localhost:1313/ist-md-pc-club-site/tags/w-2235/</link>
+    <description>Recent content in W-2235 on 東京科学大学　お茶の水コンピュータ部</description>
+    <generator>Hugo -- 0.152.2</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 08 Dec 2025 18:00:00 +0900</lastBuildDate>
+    <atom:link href="http://localhost:1313/ist-md-pc-club-site/tags/w-2235/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【ジャンク再生計画 Vol.2】LGA2066の罠とXeon選定のロジック</title>
+      <link>http://localhost:1313/ist-md-pc-club-site/posts/02-cpu-selection/</link>
+      <pubDate>Mon, 08 Dec 2025 18:00:00 +0900</pubDate>
+      <guid>http://localhost:1313/ist-md-pc-club-site/posts/02-cpu-selection/</guid>
+      <description>&lt;p&gt;前回紹介したベースマシン「HP Z4 G4」。&lt;br&gt;
+今回は、ゲーミングPCの頭脳となる &lt;strong&gt;CPUの換装&lt;/strong&gt; について、その選定プロセスを記録します。&lt;/p&gt;
+&lt;p&gt;「ソケットが合うから何でも載る」と思ったら大間違い。そこにはワークステーション特有の深い沼がありました。&lt;/p&gt;
+&lt;h2 id=&#34;1-マザーボードの仕様とc422の制約&#34;&gt;1. マザーボードの仕様と「C422」の制約&lt;/h2&gt;
+&lt;p&gt;まず、このマシンのソケットは &lt;strong&gt;LGA2066&lt;/strong&gt; です。&lt;br&gt;
+自作PCに詳しい方なら、「お、Core i9-10900Xとか、Core i7-9800Xといった『Core Xシリーズ』が載るやつじゃん！」と思うかもしれません。&lt;/p&gt;
+&lt;p&gt;私も最初はそう思いました。&lt;/p&gt;
+&lt;p&gt;しかし、Z4 G4のチップセットは &lt;strong&gt;「Intel C422」&lt;/strong&gt; です。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Intel X299チップセット:&lt;/strong&gt; コンシューマ向け。Core i9 / i7 Xシリーズに対応。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Intel C422チップセット:&lt;/strong&gt; 業務用。&lt;strong&gt;Xeon W-2000シリーズ専用。&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;そう、物理的にソケットの形状が同じでも、&lt;strong&gt;Core iシリーズは認識しない&lt;/strong&gt;のです（排他仕様）。&lt;br&gt;
+この時点で、高性能な中古のCore i9を載せる夢は断たれ、&lt;strong&gt;「Xeon W-2000シリーズ」&lt;/strong&gt; の中から選ぶことになりました。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ジーク・Xeon!&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;2-xeon-w-2000シリーズの型番を解読する&#34;&gt;2. Xeon W-2000シリーズの型番を解読する&lt;/h2&gt;
+&lt;p&gt;XeonのcpuはジオンのMS同様に種類が多くてわかりにくいので、今回のターゲットとなる「W-2000番台」の命名規則を整理しました。&lt;/p&gt;
+&lt;p&gt;例： &lt;strong&gt;Xeon W-2235&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;W:&lt;/strong&gt; Workstation向け（シングルソケット用）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;2:&lt;/strong&gt; シリーズ区分（メインストリーム）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;2:&lt;/strong&gt; 世代（1=Skylake-W, 2=Cascade Lake-W）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;35:&lt;/strong&gt; 性能ランク（数字が大きいほどコア数が増える）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Z4 G4の初期搭載CPUは「W-2102」だったので、Skylake-Wのエントリーモデルでした。&lt;br&gt;
+今回は、脆弱性対策が進み、クロックあたりの性能も微増している &lt;strong&gt;Cascade Lake-W / W-22xx&lt;/strong&gt; のものを中心に探すことにしました。&lt;/p&gt;
+&lt;h2 id=&#34;3-候補cpu比較ゲーミングに最適なのは誰だ&#34;&gt;3. 候補CPU比較：ゲーミングに最適なのは誰だ？&lt;/h2&gt;
+&lt;p&gt;ゲーム用途で最も重要なのは「コア数」よりも &lt;strong&gt;「クロック周波数」&lt;/strong&gt; です（厳密にはシングル性能）。&lt;br&gt;
+いくらコアが多くても、1コアあたりの速度が遅いとFPSが伸びません。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

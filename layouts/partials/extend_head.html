@@ -1,0 +1,46 @@
+<style>
+    /* =================================================================
+       1. リンク文字色（アクセントカラー）の設定
+       ================================================================= */
+
+    /* --- 【ライトモード】 --- */
+    /* 記事内のリンク(.post-content a) と ホームの挨拶(.entry-content a) */
+    .post-content a,
+    .entry-content a {
+        color: #003399 !important; /* 濃いネイビー */
+    }
+
+    /* --- 【ダークモード】 --- */
+    /* bodyにdarkクラスがついている時 */
+    body.dark .post-content a,
+    body.dark .entry-content a {
+        color: #33ccff !important; /* 発光するようなシアン */
+    }
+
+    /* マウスを乗せた時の下線（共通） */
+    .post-content a:hover,
+    .entry-content a:hover {
+        text-decoration: underline;
+    }
+
+
+    /* =================================================================
+       2. 蛍光ペン風マーカー（太文字 strong）の設定
+       ================================================================= */
+
+    /* --- 【ライトモード】 --- */
+    strong {
+        font-weight: bold;
+        color: inherit;
+        padding: 0 2px;
+        /* 黄色のマーカー */
+        background: linear-gradient(transparent 60%, #ffff99 60%);
+    }
+
+    /* --- 【ダークモード】 --- */
+    body.dark strong {
+        /* 深い青緑（ティール）のマーカー */
+        /* これなら白文字の邪魔をせず、テック感が出ます */
+        background: linear-gradient(transparent 60%, #005f73 60%);
+    }
+</style>

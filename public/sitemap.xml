@@ -2,22 +2,120 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/posts/01-parts-selection/</loc>
+    <loc>http://localhost:1313/ist-md-pc-club-site/posts/06-2026-new-year/</loc>
+    <lastmod>2026-01-07T12:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/ist-md-pc-club-site/categories/</loc>
+    <lastmod>2026-01-07T12:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/ist-md-pc-club-site/posts/</loc>
+    <lastmod>2026-01-07T12:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/ist-md-pc-club-site/tags/</loc>
+    <lastmod>2026-01-07T12:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/ist-md-pc-club-site/tags/%E3%81%8A%E5%AE%88%E3%82%8A/</loc>
+    <lastmod>2026-01-07T12:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/ist-md-pc-club-site/tags/%E3%81%8A%E8%8C%B6%E3%81%AE%E6%B0%B4/</loc>
+    <lastmod>2026-01-07T12:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/ist-md-pc-club-site/tags/%E6%9D%B1%E4%BA%AC%E7%A7%91%E5%AD%A6%E5%A4%A7%E5%AD%A6/</loc>
+    <lastmod>2026-01-07T12:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/ist-md-pc-club-site/</loc>
+    <lastmod>2026-01-07T12:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/ist-md-pc-club-site/categories/%E6%B4%BB%E5%8B%95%E5%A0%B1%E5%91%8A/</loc>
+    <lastmod>2026-01-07T12:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/ist-md-pc-club-site/tags/%E7%A5%9E%E7%94%B0%E6%98%8E%E7%A5%9E/</loc>
+    <lastmod>2026-01-07T12:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/ist-md-pc-club-site/categories/%E9%9B%91%E8%A8%98/</loc>
+    <lastmod>2026-01-07T12:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/ist-md-pc-club-site/posts/05-memory-ecc/</loc>
+    <lastmod>2025-12-26T20:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/ist-md-pc-club-site/tags/ecc/</loc>
+    <lastmod>2025-12-26T20:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/ist-md-pc-club-site/tags/hp-z4-g4/</loc>
+    <lastmod>2025-12-26T20:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/ist-md-pc-club-site/tags/%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC/</loc>
+    <lastmod>2025-12-26T20:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/ist-md-pc-club-site/categories/%E3%82%B8%E3%83%A3%E3%83%B3%E3%82%AF%E5%86%8D%E7%94%9F/</loc>
+    <lastmod>2025-12-26T20:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/ist-md-pc-club-site/tags/%E3%83%A1%E3%83%A2%E3%83%AA/</loc>
+    <lastmod>2025-12-26T20:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/ist-md-pc-club-site/categories/%E8%87%AA%E4%BD%9Cpc/</loc>
+    <lastmod>2025-12-26T20:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/ist-md-pc-club-site/posts/04-gpu-selection/</loc>
+    <lastmod>2025-12-16T12:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/ist-md-pc-club-site/tags/gpu/</loc>
+    <lastmod>2025-12-16T12:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/ist-md-pc-club-site/tags/nvidia/</loc>
+    <lastmod>2025-12-16T12:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/ist-md-pc-club-site/tags/rtx-4070/</loc>
+    <lastmod>2025-12-16T12:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/ist-md-pc-club-site/tags/%E3%82%B0%E3%83%A9%E3%83%9C/</loc>
+    <lastmod>2025-12-16T12:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/ist-md-pc-club-site/posts/03-festival-report/</loc>
+    <lastmod>2025-12-11T12:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/ist-md-pc-club-site/tags/%E3%81%8A%E8%8C%B6%E3%81%AE%E6%B0%B4%E7%A5%AD/</loc>
+    <lastmod>2025-12-11T12:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/ist-md-pc-club-site/tags/%E3%82%8F%E3%82%89%E3%81%B3%E9%A4%85%E3%83%89%E3%83%AA%E3%83%B3%E3%82%AF/</loc>
+    <lastmod>2025-12-11T12:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/ist-md-pc-club-site/tags/%E5%90%88%E5%90%8C%E4%BC%81%E7%94%BB/</loc>
+    <lastmod>2025-12-11T12:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/ist-md-pc-club-site/tags/%E5%AD%A6%E7%A5%AD/</loc>
+    <lastmod>2025-12-11T12:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/ist-md-pc-club-site/members/</loc>
+    <lastmod>2025-12-09T18:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/ist-md-pc-club-site/posts/02-cpu-selection/</loc>
+    <lastmod>2025-12-08T18:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/ist-md-pc-club-site/tags/cpu/</loc>
+    <lastmod>2025-12-08T18:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/ist-md-pc-club-site/tags/lga2066/</loc>
+    <lastmod>2025-12-08T18:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/ist-md-pc-club-site/tags/w-2235/</loc>
+    <lastmod>2025-12-08T18:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/ist-md-pc-club-site/tags/xeon/</loc>
+    <lastmod>2025-12-08T18:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/ist-md-pc-club-site/posts/01-parts-selection/</loc>
     <lastmod>2025-12-02T12:00:00+09:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/</loc>
+    <loc>http://localhost:1313/ist-md-pc-club-site/tags/%E3%82%B8%E3%83%A3%E3%83%B3%E3%82%AF/</loc>
     <lastmod>2025-12-02T12:00:00+09:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>http://localhost:1313/ist-md-pc-club-site/tags/%E3%83%AF%E3%83%BC%E3%82%AF%E3%82%B9%E3%83%86%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/</loc>
     <lastmod>2025-12-02T12:00:00+09:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/00-website-open/</loc>
+    <loc>http://localhost:1313/ist-md-pc-club-site/posts/00-website-open/</loc>
     <lastmod>2025-12-01T12:00:00+09:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
-  </url><url>
-    <loc>http://localhost:1313/tags/</loc>
-  </url><url>
-    <loc>http://localhost:1313/about/</loc>
+    <loc>http://localhost:1313/ist-md-pc-club-site/about/</loc>
   </url>
 </urlset>

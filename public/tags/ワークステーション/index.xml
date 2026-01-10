@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>ワークステーション on 東京科学大学　お茶の水コンピュータ部</title>
+    <link>http://localhost:1313/ist-md-pc-club-site/tags/%E3%83%AF%E3%83%BC%E3%82%AF%E3%82%B9%E3%83%86%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/</link>
+    <description>Recent content in ワークステーション on 東京科学大学　お茶の水コンピュータ部</description>
+    <generator>Hugo -- 0.152.2</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 02 Dec 2025 12:00:00 +0900</lastBuildDate>
+    <atom:link href="http://localhost:1313/ist-md-pc-club-site/tags/%E3%83%AF%E3%83%BC%E3%82%AF%E3%82%B9%E3%83%86%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【ジャンク再生計画 Vol.1】予算11万円でPS5 proに勝つ！現状編</title>
+      <link>http://localhost:1313/ist-md-pc-club-site/posts/01-parts-selection/</link>
+      <pubDate>Tue, 02 Dec 2025 12:00:00 +0900</pubDate>
+      <guid>http://localhost:1313/ist-md-pc-club-site/posts/01-parts-selection/</guid>
+      <description>&lt;p&gt;部員S藤が某所から貰ってきた5年落ちのワークステーション。&lt;br&gt;
+もともと業務用のミドルクラス機なので電源や拡張性など、ポテンシャルはあります。&lt;br&gt;
+このマシンのパーツを換装して、低価格でハイスペpcを目指します！&lt;/p&gt;
+&lt;h2 id=&#34;今回のコンセプト&#34;&gt;今回のコンセプト&lt;/h2&gt;
+&lt;p&gt;ただ組むだけじゃ面白くありません。今回のテーマはps5 pro以下の費用で、ps5 pro以上のスペック、汎用性を目指すことです。&lt;/p&gt;
+&lt;h2 id=&#34;現状のpcの紹介&#34;&gt;現状のpcの紹介&lt;/h2&gt;
+&lt;h3 id=&#34;1-本体&#34;&gt;1. 本体&lt;/h3&gt;
+&lt;p&gt;&lt;img alt=&#34;本体の外観&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/ist-md-pc-club-site/images/Z4G4_normal.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;HP社の業務用ワークステーション Z4G4。&lt;br&gt;
+法人向けとしてはエントリーミドルクラスで、発売当時の新品価格は構成にもよりますが、30万から40万ほどです。&lt;br&gt;
+ワークステーションのためcpuはxeonシリーズを使用し、gpuもquadroシリーズ、メモリもECCメモリを採用しています。&lt;br&gt;
+いわゆるミドルタワーで、電源や内部スペースには余裕があります。&lt;/p&gt;
+&lt;h3 id=&#34;2-cpu-xeon-w-2102&#34;&gt;2. cpu: [xeon w-2102]&lt;/h3&gt;
+&lt;p&gt;Z4G4で選べる最小構成のcpu。2017年発売。&lt;br&gt;
+14nmプロセスの、4コア 4スレッドのモデル。性能は高いとは言えませんが、xeonシリーズだけあって最大メモリは512GBまで対応しています。&lt;br&gt;
+性能的にはi5-7400より少し低いぐらい。　最近のゲームをプレイするのはちょっと厳しいです。&lt;/p&gt;
+&lt;h3 id=&#34;3-gpu-quadro-p620&#34;&gt;3. gpu: [quadro p620]&lt;/h3&gt;
+&lt;p&gt;ワークステーション用のquadroシリーズ。&lt;br&gt;
+TDPは40W。VRAMは2GB、ロープロ対応で、４系統のMini DisplayPortで4画面同時出力ができます。&lt;br&gt;
+ゲーミング性能はGTX950より少し低いぐらい。&lt;br&gt;
+最近のゲームには向きませんが、通常のビデオカードとしてみればロープロで発熱も少なく優秀と言えます。&lt;/p&gt;
+&lt;h3 id=&#34;4-電源&#34;&gt;4. 電源&lt;/h3&gt;
+&lt;p&gt;HPの専用品。750Wで多分80 plus gold。&lt;br&gt;
+一応ATX規格らしいですが、他のマザボで使えるのかは不明です。&lt;br&gt;
+グラボ用の電源ピンは6ピンが二つあります。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;次回、換装パーツの選定編。そもそもどんなパーツが使えるのか、どれぐらいアップデートできるのか!?&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

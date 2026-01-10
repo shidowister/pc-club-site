@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/ist-md-pc-club-site/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=ist-md-pc-club-site/livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>【ジャンク再生計画 Vol.2】LGA2066の罠とXeon選定のロジック | 東京科学大学　お茶の水コンピュータ部</title>
+<meta name="keywords" content="HP Z4 G4, Xeon, LGA2066, CPU, w-2235">
+<meta name="description" content="前回紹介したベースマシン「HP Z4 G4」。
+今回は、ゲーミングPCの頭脳となる CPUの換装 について、その選定プロセスを記録します。
+「ソケットが合うから何でも載る」と思ったら大間違い。そこにはワークステーション特有の深い沼がありました。
+1. マザーボードの仕様と「C422」の制約
+まず、このマシンのソケットは LGA2066 です。
+自作PCに詳しい方なら、「お、Core i9-10900Xとか、Core i7-9800Xといった『Core Xシリーズ』が載るやつじゃん！」と思うかもしれません。
+私も最初はそう思いました。
+しかし、Z4 G4のチップセットは 「Intel C422」 です。
+
+Intel X299チップセット: コンシューマ向け。Core i9 / i7 Xシリーズに対応。
+Intel C422チップセット: 業務用。Xeon W-2000シリーズ専用。
+
+そう、物理的にソケットの形状が同じでも、Core iシリーズは認識しないのです（排他仕様）。
+この時点で、高性能な中古のCore i9を載せる夢は断たれ、「Xeon W-2000シリーズ」 の中から選ぶことになりました。
+ジーク・Xeon!
+2. Xeon W-2000シリーズの型番を解読する
+XeonのcpuはジオンのMS同様に種類が多くてわかりにくいので、今回のターゲットとなる「W-2000番台」の命名規則を整理しました。
+例： Xeon W-2235
+
+W: Workstation向け（シングルソケット用）
+2: シリーズ区分（メインストリーム）
+2: 世代（1=Skylake-W, 2=Cascade Lake-W）
+35: 性能ランク（数字が大きいほどコア数が増える）
+
+Z4 G4の初期搭載CPUは「W-2102」だったので、Skylake-Wのエントリーモデルでした。
+今回は、脆弱性対策が進み、クロックあたりの性能も微増している Cascade Lake-W / W-22xx のものを中心に探すことにしました。
+3. 候補CPU比較：ゲーミングに最適なのは誰だ？
+ゲーム用途で最も重要なのは「コア数」よりも 「クロック周波数」 です（厳密にはシングル性能）。
+いくらコアが多くても、1コアあたりの速度が遅いとFPSが伸びません。">
+<meta name="author" content="S藤">
+<link rel="canonical" href="http://localhost:1313/ist-md-pc-club-site/posts/02-cpu-selection/">
+<link crossorigin="anonymous" href="/ist-md-pc-club-site/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/ist-md-pc-club-site/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/ist-md-pc-club-site/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/ist-md-pc-club-site/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/ist-md-pc-club-site/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/ist-md-pc-club-site/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/ist-md-pc-club-site/posts/02-cpu-selection/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><style>
+     
+
+     
+     
+    .post-content a,
+    .entry-content a {
+        color: #003399 !important;  
+    }
+
+     
+     
+    body.dark .post-content a,
+    body.dark .entry-content a {
+        color: #33ccff !important;  
+    }
+
+     
+    .post-content a:hover,
+    .entry-content a:hover {
+        text-decoration: underline;
+    }
+
+
+     
+
+     
+    strong {
+        font-weight: bold;
+        color: inherit;
+        padding: 0 2px;
+         
+        background: linear-gradient(transparent 60%, #ffff99 60%);
+    }
+
+     
+    body.dark strong {
+         
+         
+        background: linear-gradient(transparent 60%, #005f73 60%);
+    }
+</style>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/ist-md-pc-club-site/" accesskey="h" title="東京科学大学&lt;br&gt;お茶の水コンピュータ部 (Alt + H)">東京科学大学<br>お茶の水コンピュータ部</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/ist-md-pc-club-site/about/" title="部について">
+                    <span>部について</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/ist-md-pc-club-site/members/" title="部員紹介">
+                    <span>部員紹介</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      【ジャンク再生計画 Vol.2】LGA2066の罠とXeon選定のロジック
+    </h1>
+    <div class="post-meta"><span title='2025-12-08 18:00:00 +0900 JST'>December 8, 2025</span>&nbsp;·&nbsp;<span><a href='http://localhost:1313/ist-md-pc-club-site/members/#S藤' style='color: inherit; text-decoration: none; display: inline-flex; align-items: center;'><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' style='margin-right: 5px;'><path d='M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2'></path><circle cx='12' cy='7' r='4'></circle></svg>S藤</a></span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>前回紹介したベースマシン「HP Z4 G4」。<br>
+今回は、ゲーミングPCの頭脳となる <strong>CPUの換装</strong> について、その選定プロセスを記録します。</p>
+<p>「ソケットが合うから何でも載る」と思ったら大間違い。そこにはワークステーション特有の深い沼がありました。</p>
+<h2 id="1-マザーボードの仕様とc422の制約">1. マザーボードの仕様と「C422」の制約<a hidden class="anchor" aria-hidden="true" href="#1-マザーボードの仕様とc422の制約">#</a></h2>
+<p>まず、このマシンのソケットは <strong>LGA2066</strong> です。<br>
+自作PCに詳しい方なら、「お、Core i9-10900Xとか、Core i7-9800Xといった『Core Xシリーズ』が載るやつじゃん！」と思うかもしれません。</p>
+<p>私も最初はそう思いました。</p>
+<p>しかし、Z4 G4のチップセットは <strong>「Intel C422」</strong> です。</p>
+<ul>
+<li><strong>Intel X299チップセット:</strong> コンシューマ向け。Core i9 / i7 Xシリーズに対応。</li>
+<li><strong>Intel C422チップセット:</strong> 業務用。<strong>Xeon W-2000シリーズ専用。</strong></li>
+</ul>
+<p>そう、物理的にソケットの形状が同じでも、<strong>Core iシリーズは認識しない</strong>のです（排他仕様）。<br>
+この時点で、高性能な中古のCore i9を載せる夢は断たれ、<strong>「Xeon W-2000シリーズ」</strong> の中から選ぶことになりました。</p>
+<p><strong>ジーク・Xeon!</strong></p>
+<h2 id="2-xeon-w-2000シリーズの型番を解読する">2. Xeon W-2000シリーズの型番を解読する<a hidden class="anchor" aria-hidden="true" href="#2-xeon-w-2000シリーズの型番を解読する">#</a></h2>
+<p>XeonのcpuはジオンのMS同様に種類が多くてわかりにくいので、今回のターゲットとなる「W-2000番台」の命名規則を整理しました。</p>
+<p>例： <strong>Xeon W-2235</strong></p>
+<ul>
+<li><strong>W:</strong> Workstation向け（シングルソケット用）</li>
+<li><strong>2:</strong> シリーズ区分（メインストリーム）</li>
+<li><strong>2:</strong> 世代（1=Skylake-W, 2=Cascade Lake-W）</li>
+<li><strong>35:</strong> 性能ランク（数字が大きいほどコア数が増える）</li>
+</ul>
+<p>Z4 G4の初期搭載CPUは「W-2102」だったので、Skylake-Wのエントリーモデルでした。<br>
+今回は、脆弱性対策が進み、クロックあたりの性能も微増している <strong>Cascade Lake-W / W-22xx</strong> のものを中心に探すことにしました。</p>
+<h2 id="3-候補cpu比較ゲーミングに最適なのは誰だ">3. 候補CPU比較：ゲーミングに最適なのは誰だ？<a hidden class="anchor" aria-hidden="true" href="#3-候補cpu比較ゲーミングに最適なのは誰だ">#</a></h2>
+<p>ゲーム用途で最も重要なのは「コア数」よりも <strong>「クロック周波数」</strong> です（厳密にはシングル性能）。<br>
+いくらコアが多くても、1コアあたりの速度が遅いとFPSが伸びません。</p>
+<p>予算（お小遣い）と性能のバランスを考え、以下の4つを比較検討しました。</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">モデル名</th>
+          <th style="text-align: left">コア/スレッド</th>
+          <th style="text-align: left">定格/ターボ</th>
+          <th style="text-align: left">L3キャッシュ</th>
+          <th style="text-align: left">中古相場</th>
+          <th style="text-align: left">判定</th>
+          <th style="text-align: left">例えるなら</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>W-2155</strong></td>
+          <td style="text-align: left">10C / 20T</td>
+          <td style="text-align: left">3.3 / 4.5GHz</td>
+          <td style="text-align: left">13.75MB</td>
+          <td style="text-align: left">普通 （２〜3万円）</td>
+          <td style="text-align: left">▲ コア数が多く、マルチコア性能は良いが、その分TDPも高く、設計が1世代古い</td>
+          <td style="text-align: left">ヅダ</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>W-2225</strong></td>
+          <td style="text-align: left">4C / 8T</td>
+          <td style="text-align: left">4.1 / 4.6GHz</td>
+          <td style="text-align: left">8.25MB</td>
+          <td style="text-align: left">安い （1~2万円）</td>
+          <td style="text-align: left">○ クロックは最強だが、4コアは心許ない 、L3キャッシュが少ないのが気がかり</td>
+          <td style="text-align: left">　ザクII</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>W-2235</strong></td>
+          <td style="text-align: left"><strong>6C / 12T</strong></td>
+          <td style="text-align: left"><strong>3.8 / 4.6GHz</strong></td>
+          <td style="text-align: left"><strong>8.25MB</strong></td>
+          <td style="text-align: left"><strong>やや安い</strong> （１〜2万円）</td>
+          <td style="text-align: left"><strong>◎ バランス最高。今回の本命</strong> L3キャッシュが少ないのが気がかり</td>
+          <td style="text-align: left">ドム　</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>W-2245</strong></td>
+          <td style="text-align: left">8C / 16T</td>
+          <td style="text-align: left">3.9 / 4.7GHz</td>
+          <td style="text-align: left">16.5MB</td>
+          <td style="text-align: left">高い （６〜8万円）</td>
+          <td style="text-align: left">× 性能は最高で、L3キャッシュも多いが、予算オーバー。 また、TDPが高く、上位のクーラーが必要。</td>
+          <td style="text-align: left">ジオング　</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="比較考察">比較考察<a hidden class="anchor" aria-hidden="true" href="#比較考察">#</a></h3>
+<ul>
+<li><strong>W-2155:</strong> 10コアは魅力的だが、ゲームにおいては「遊び」になるコアが増えるだけで、TDPも高く、電力の無駄になりかねない。また、シングル性能は次世代に劣る。</li>
+<li><strong>W-2225:</strong> ベース4.1GHzは魅力的だが、最近のゲームはバックグラウンド処理も含めると6コア以上を推奨するものが多い。また、値段が上位機種の2235とそこまで変わらない。</li>
+<li><strong>W-2235:</strong> 定格で3.8GHz、ターボで4.6GHz。6コア12スレッドあれば現代のゲームでもCPU使用率が100%に張り付くことは稀だと考える。L3キャッシュが少ないのが3Dゲームのプレイにおいて気がかり。</li>
+<li><strong>W-2245:</strong> L3キャッシュも多く、コア数、クロック数ともに優秀。しかし一気に値段が上がり、また純正のcpuクーラーではなく、オプションのZクーラーが必要。</li>
+</ul>
+<h2 id="4-結論">4. 結論<a hidden class="anchor" aria-hidden="true" href="#4-結論">#</a></h2>
+<p>以上の検討から、今回は <strong>「Xeon W-2235」</strong> を採用することにしました。<br>
+TDPは130Wありますが、HPの仕様書によると、w-2235までなら純正のcpuクーラーでも問題ないようです。</p>
+<p>以下おふざけ</p>
+<hr>
+<blockquote>
+<p>「見せてもらおうか、業務用のCPUの性能とやらを。」</p>
+<p>CPUを決めたZ4 G4を待ち受けていたRadeonは、遂に赤い彗星の本領を発揮してRTXに迫る。<br>
+それは、ゲームプレイとAI利用とコスパを考える恐ろしい戦いであった。</p>
+<p>ジャンク再生計画、次回「GPUの選定編」</p>
+<p><strong>君は生き延びることができるか?</strong></p>
+</blockquote>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/ist-md-pc-club-site/tags/hp-z4-g4/">HP Z4 G4</a></li>
+      <li><a href="http://localhost:1313/ist-md-pc-club-site/tags/xeon/">Xeon</a></li>
+      <li><a href="http://localhost:1313/ist-md-pc-club-site/tags/lga2066/">LGA2066</a></li>
+      <li><a href="http://localhost:1313/ist-md-pc-club-site/tags/cpu/">CPU</a></li>
+      <li><a href="http://localhost:1313/ist-md-pc-club-site/tags/w-2235/">W-2235</a></li>
+    </ul>
+  </footer><div class="giscus"></div>
+
+<script>
+    
+    
+    
+    function getTargetTheme() {
+        
+        const savedTheme = localStorage.getItem("pref-theme");
+
+        
+        if (savedTheme === "dark") return "transparent_dark"; 
+        if (savedTheme === "light") return "light";
+
+        
+        return window.matchMedia("(prefers-color-scheme: dark)").matches ? "transparent_dark" : "light";
+    }
+
+    
+    
+    
+    
+    function loadGiscus() {
+        const container = document.querySelector(".giscus");
+        
+        
+        container.innerHTML = "";
+
+        
+        const giscusScript = document.createElement("script");
+        const theme = getTargetTheme(); 
+
+        
+        const config = {
+            "src": "https://giscus.app/client.js",
+            "data-repo": "shidowister/ist-md-pc-club-site",
+            "data-repo-id": "R_kgDOQg0ojg",
+            "data-category": "General",
+            "data-category-id": "DIC_kwDOQg0ojs4C0htG",
+            "data-mapping": "title",
+            "data-strict": "0",
+            "data-reactions-enabled": "1",
+            "data-emit-metadata": "0",
+            "data-input-position": "bottom",
+            "data-lang": "ja",
+            "data-theme": theme, 
+            "crossorigin": "anonymous",
+            "async": ""
+        };
+
+        
+        Object.keys(config).forEach(key => {
+            giscusScript.setAttribute(key, config[key]);
+        });
+
+        
+        container.appendChild(giscusScript);
+        
+        console.log(`[Giscus] Reloaded with theme: ${theme}`);
+    }
+
+    
+    
+    
+    
+    
+    loadGiscus();
+
+    
+    const themeToggle = document.querySelector('#theme-toggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            
+            setTimeout(loadGiscus, 200);
+        });
+    }
+</script>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/ist-md-pc-club-site/">東京科学大学　お茶の水コンピュータ部</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>ECC on 東京科学大学　お茶の水コンピュータ部</title>
+    <link>http://localhost:1313/ist-md-pc-club-site/tags/ecc/</link>
+    <description>Recent content in ECC on 東京科学大学　お茶の水コンピュータ部</description>
+    <generator>Hugo -- 0.152.2</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 26 Dec 2025 20:00:00 +0900</lastBuildDate>
+    <atom:link href="http://localhost:1313/ist-md-pc-club-site/tags/ecc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【ジャンク再生計画 Vol.4】「ECCメモリ」って何？ サーバー用メモリの安さと罠</title>
+      <link>http://localhost:1313/ist-md-pc-club-site/posts/05-memory-ecc/</link>
+      <pubDate>Fri, 26 Dec 2025 20:00:00 +0900</pubDate>
+      <guid>http://localhost:1313/ist-md-pc-club-site/posts/05-memory-ecc/</guid>
+      <description>&lt;p&gt;CPU、GPUときて、今回は &lt;strong&gt;「メモリ」&lt;/strong&gt; です。&lt;br&gt;
+もともとこのZ4G4にはmicron製のDDR4の8GBのメモリが２枚挿さっていました。&lt;/p&gt;
+&lt;p&gt;普通のパソコンなら「DDR4の8GBをもう何枚か買えばOK！」で終わる話ですが、相手はワークステーションでCPUはXeon。そう簡単にはいきません。&lt;/p&gt;
+&lt;p&gt;今回は、我々を悩ませる &lt;strong&gt;「ECCメモリ」&lt;/strong&gt; と、その種類のについて解説します。&lt;/p&gt;
+&lt;h2 id=&#34;1-そもそもeccメモリとは&#34;&gt;1. そもそも「ECCメモリ」とは？&lt;/h2&gt;
+&lt;p&gt;普通のPC用メモリ（Non-ECC）と違い、&lt;strong&gt;ECC（Error Correction Code）&lt;/strong&gt; メモリには「データのエラーを自動で訂正する機能」がついています。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;普通:&lt;/strong&gt; なんらかのエラーでデータが1ビット化けた → &lt;strong&gt;ブルースクリーンで落ちる&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ECC:&lt;/strong&gt; データが化けた → &lt;strong&gt;自動で直して動き続ける&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;「24時間365日止まってはいけない」サーバーやワークステーションのための機能です。&lt;br&gt;
+この機能のおかげで、Xeonマシンは非常に安定しているわけですね。&lt;/p&gt;
+&lt;p&gt;このECC機能の影響で、動作が1クロック分遅くなるという弱点はありますが、大体2000Mhzを超える動作の1クロックは誤差の範囲です。&lt;/p&gt;
+&lt;h2 id=&#34;2-registeredとunbufferedの罠&#34;&gt;2. 「Registered」と「Unbuffered」の罠&lt;/h2&gt;
+&lt;p&gt;ここからが本題です。&lt;br&gt;
+実はXeonで使えるECCメモリには、大きく分けて2種類あります。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;ECC UDIMM (Unbuffered):&lt;/strong&gt; 普通のメモリにECC機能がついただけのもの。一部のCore iシリーズや一部のRyzenでも使えたりする。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ECC RDIMM (Registered):&lt;/strong&gt; 信号を整える「レジスタ」チップが載ったガチ業務用。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;この2つ、&lt;strong&gt;形は同じDDR4なのに混ぜると動きません。&lt;/strong&gt;&lt;br&gt;
+そしてマザーボードによって「どっちしか対応していない」という縛りがあったりします。&lt;/p&gt;
+&lt;p&gt;今回のHP Z4 G4は、公式には &lt;strong&gt;「RDIMM」&lt;/strong&gt; が推奨されています。（UDIMMも動く場合がありますが、混在は不可）&lt;/p&gt;
+&lt;h2 id=&#34;3-なぜサーバー用メモリは安いのか&#34;&gt;3. なぜサーバー用メモリは安いのか？&lt;/h2&gt;
+&lt;p&gt;ヤフオクやメルカリを見ると、中古なら普通のDDR4メモリより、&lt;strong&gt;サーバー用（RDIMM）の方がちょっと安い&lt;/strong&gt;ことに気づきます。&lt;br&gt;
+「8GBで1000円！？」みたいなことがたまにあります。&lt;/p&gt;
+&lt;p&gt;理由は単純。&lt;br&gt;
+&lt;strong&gt;「データセンターの世代交代で大量に廃棄されるから」&lt;/strong&gt; そして &lt;strong&gt;「普通のPCには刺さらないから」&lt;/strong&gt; です。&lt;/p&gt;
+&lt;p&gt;需要と供給の関係で、我々のようなジャンクPC愛好家にとって、RDIMMは &lt;strong&gt;「宝の山」&lt;/strong&gt; なのです。&lt;/p&gt;
+&lt;p&gt;もちろん業務用なので、普通に買うとびっくりするぐらい高いです。&lt;/p&gt;
+&lt;h2 id=&#34;4-今回の戦利品&#34;&gt;4. 今回の戦利品&lt;/h2&gt;
+&lt;p&gt;というわけで、今回確保したメモリがこちら。&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Sk hynix DDR4 ECC RDIMM&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/ist-md-pc-club-site/images/ecc-memory.jpeg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Sk hynix製 DDR4-2666V ECC RDIMM 8GB × 3枚 = 24GB&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
